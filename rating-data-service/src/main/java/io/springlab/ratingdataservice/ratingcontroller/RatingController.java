@@ -17,6 +17,8 @@ import java.util.List;
 @RequestMapping("/ratings")
 public class RatingController {
 
+
+
     private static Logger log= LoggerFactory.getLogger(RatingController.class);
 
     @Value("${eureka.instance.instance-id}")
@@ -24,19 +26,15 @@ public class RatingController {
 
     @RequestMapping(path = "/{movieId}",method = RequestMethod.GET)
     public Rating getRatingsInfo(@PathVariable("movieId") String movieId){
-        log.info("getRatingsInfo() called.... ");
+        log.debug("getRatingsInfo() called.... ");
         return new Rating(movieId,4);
     }
 
     @RequestMapping(path = "/users/{userId}",method = RequestMethod.GET)
-    public UserRating getRatingsInfoByUserId(){
-        log.info("getRatingsInfoByUserId called.... {}",instanceId);
-        List<Rating> ratings= Arrays.asList(
-                new Rating("1234",5),
-                new Rating("12345",4)
-        );
-        UserRating userRating=new UserRating();
-        userRating.setUserRating(ratings);
+    public UserRating getRatingsInfoByUserId(@PathVariable("userId") String userId){
+        log.debug("getRatingsInfoByUserId called.... {}",instanceId);
+        UserRating userRating = new UserRating();
+        userRating.initData(userId);
         return userRating;
     }
 }

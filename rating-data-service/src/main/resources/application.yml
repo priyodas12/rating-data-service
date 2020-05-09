@@ -18,5 +18,8 @@ logging:
   level:
     root: debug
 
+api:
+  key: 240878439c8161ee282210da34cf7e1a
+
 
 
