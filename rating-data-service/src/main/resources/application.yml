@@ -1,0 +1,22 @@
+
+server:
+  port: 0
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+spring:
+  application:
+    name: rating-data-service
+  output:
+    ansi:
+      enabled: always
+
+
+logging:
+  level:
+    root: debug
+
+
+
